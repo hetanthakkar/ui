@@ -4,14 +4,14 @@ var screenHeight = Math.round(Dimensions.get("window").height) / 100;
 
 const styles1 = StyleSheet.create({
   skills: {
-    marginLeft: screenWidth * 4,
+    marginLeft: screenWidth * 2,
     color: "white",
     fontSize: 18,
   },
   textInput: {
     color: "white",
-    marginTop: screenHeight * 3,
-    marginLeft: screenWidth * 4,
+    marginTop: screenHeight * 4,
+    marginLeft: screenWidth * 2,
     padding: 5,
     width: screenWidth * 40,
     borderColor: "white",

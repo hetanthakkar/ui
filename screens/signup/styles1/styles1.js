@@ -1,11 +1,17 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { isAndroidPlastForm } from "../../../helper";
+
 var screenWidth = Math.round(Dimensions.get("window").width) / 100;
 var screenHeight = Math.round(Dimensions.get("window").height) / 100;
 
 const styles1 = StyleSheet.create({
   pickerText: {
-    width: screenWidth * 100,
+    width:  isAndroidPlastForm() ? screenWidth * 100:0,
     color: "white",
+    fontSize:15,
+    marginVertical:7,
+    paddingVertical:5,
+
   },
   sign: {
     marginTop: screenHeight * 15,
@@ -30,7 +36,7 @@ const styles1 = StyleSheet.create({
     backgroundColor: "#1287A5",
     borderRadius: 20,
     width: screenWidth * 40,
-    height: screenHeight * 8,
+    height: screenHeight * 6,
   },
   textStyle: {
     color: "#EAF0F1",

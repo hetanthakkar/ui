@@ -3,8 +3,8 @@ import * as ImagePicker from "expo-image-picker";
 import { connect } from "react-redux";
 import addUser from "./signup/actions/index";
 import styles from "./imgstyle";
+import { StyleSheet } from "react-native";
 import {
-  Dimensions,
   Image,
   BackHandler,
   ActivityIndicator,
@@ -116,6 +116,7 @@ class App extends React.Component {
     uploading: false,
   };
 
+ 
   render() {
     return (
       <View style={styles.container}>

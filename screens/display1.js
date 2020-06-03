@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import addUser from "../../ui/screens/signup/actions/index";
+import addUser from "./signup/actions/index";
 import * as React from "react";
 import {
   Text,
@@ -12,6 +12,7 @@ import {
 import styles from "./skillstyle";
 import { Picker } from "react-native-picker-dropdown";
 import { TextInput } from "react-native-gesture-handler";
+import { isAndroidPlastForm } from "../helper/index";
 
 var screenWidth = Math.round(Dimensions.get("window").width) / 100;
 
@@ -91,6 +92,8 @@ class Display1 extends React.Component {
       return [" "].map((specifics) => (
         <Picker.Item label={specifics} value={specifics} />
       ));
+      return <Picker.Item label="Enter Skills" value="" />;
+
   };
   submit = () => {
     if (this.state.skill == "") {
@@ -137,7 +140,13 @@ class Display1 extends React.Component {
         <Picker
           selectedValue={this.state.skill}
           onValueChange={this.updateSkill}
-          textStyle={{ width: screenWidth * 100, color: "white" }}
+          placeholder="Select Skills"
+
+          textStyle={{ width:  isAndroidPlastForm() ? screenWidth * 100:0,
+            color: "white",
+            fontSize:15,
+            marginVertical:7,
+            paddingVertical:5, }}
           mode="dialog"
         >
           <Picker.Item label="Select Skils: " value="" />
@@ -171,7 +180,13 @@ class Display1 extends React.Component {
         <Picker
           onValueChange={(itemValue) => this.updateSpecifics(itemValue)}
           selectedValue={this.state.specifics}
-          textStyle={{ width: screenWidth * 100, color: "white" }}
+          placeholder="Select City"
+
+          textStyle={{ width:  isAndroidPlastForm() ? screenWidth * 100:0,
+            color: "white",
+            fontSize:15,
+            marginVertical:7,
+            paddingVertical:5,}}
           mode="dialog"
         >
           {this.getCities()}
