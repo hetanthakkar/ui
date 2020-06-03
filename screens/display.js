@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, View, TouchableOpacity, Image, BackHandler } from "react-native";
 import styles from "./signup/selectstyle";
 import { connect } from "react-redux";
-import addUser from "../../ui/screens/signup/actions/index";
+import addUser from "./signup/actions/index";
 
 class Display extends React.Component {
   componentDidMount() {

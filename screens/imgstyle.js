@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   capturePhoto: {
     width: "42%",
     borderRadius: 9,
-    margin: "5%",
+    // margin: "5%",
     backgroundColor: "#6bd1e9",
     top: screenHeight * 8,
     left: screenWidth,
@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
   capturePhotoText: {
     color: "black",
     textAlign: "center",
-    fontSize: 28,
+    fontSize: 30,
     textAlignVertical: "center",
   },
   upload: {
     width: "40%",
-    margin: "5%",
+    // margin: "5%",
     borderRadius: 9,
     backgroundColor: "#6bd1e9",
     top: screenHeight,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   uploadLater: {
     width: "60%",
-    margin: "5%",
+    // margin: "5%",
     top: screenHeight * 50,
     borderRadius: 9,
     backgroundColor: "#6bd1e9",
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   mainPage: {
     width: "60%",
-    margin: "5%",
+    // margin: "5%",
     top: screenHeight * -10,
     borderRadius: 9,
     backgroundColor: "#6bd1e9",

@@ -1,13 +1,14 @@
 import React from "react";
-import { Text, View, TextInput, Alert } from "react-native";
+import { Text, View, TextInput, Alert,Dimensions } from "react-native";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import RadioForm from "react-native-simple-radio-button";
-
 import { Button } from "../../../components/button/index";
 import addUser from "../actions/index";
 import styles from "../styles1/styles1";
 import { Picker } from "react-native-picker-dropdown";
+import { isAndroidPlastForm } from "../../../helper";
+var screenHeight = Math.round(Dimensions.get("window").height) / 100;
 
 var radio_props = [
   { label: "Male    ", value: "Male" },
@@ -59,6 +60,7 @@ const myFields = ({
         {...restInput}
         placeholder={label}
         style={styles.field}
+        placeholderTextColor={"white"}
       />
       {error && touched && <Text style={styles.errorText}>{error}</Text>}
     </View>
@@ -74,6 +76,7 @@ class myFormCom extends React.Component {
   }
 
   getcityes = () => {
+    console.log({state:this.state.state})
     if (this.state.state == "Gujarat")
       return [
         "Enter City",
@@ -174,6 +177,8 @@ class myFormCom extends React.Component {
       ));
     if (this.state.state == "")
       return <Picker.Item label="Enter City" value="" />;
+
+      return <Picker.Item label="Enter City" value="" />;
   };
 
   updatecity = (value) => {
@@ -184,7 +189,7 @@ class myFormCom extends React.Component {
   };
 
   submit = (values) => {
-    if (name.indexOf(values.name) !== -1) {
+    if (name?.indexOf(values.name) !== -1) {
       Alert.alert(
         "Username Error",
         "Username Already exists",
@@ -198,7 +203,7 @@ class myFormCom extends React.Component {
         ],
         { cancelable: false }
       );
-    } else if (email.indexOf(values.email) !== -1) {
+    } else if (email?.indexOf(values.email) !== -1) {
       Alert.alert(
         "Email Error",
         "Email Already exists",
@@ -281,12 +286,13 @@ class myFormCom extends React.Component {
             component={myFields}
             label="Re-enter Password"
           />
-          <Text></Text>
+          <Text style={{paddingTop:screenHeight}}></Text>
           <Picker
             selectedValue={this.state.state}
             onValueChange={this.handleValueChange}
             mode="dialog"
             textStyle={styles.pickerText}
+            placeholder="Select State"
           >
             <Picker.Item label="Enter State" value="" />
             <Picker.Item label="Delhi" value="Delhi" />
@@ -305,11 +311,12 @@ class myFormCom extends React.Component {
             <Picker.Item label="Uttar Pradesh" value="Uttar Pradesh" />
           </Picker>
 
-          <Picker
+      <Picker
             onValueChange={(itemValue) => this.updatecity(itemValue)}
             selectedValue={this.state.city}
             mode="dialog"
             textStyle={styles.pickerText}
+            placeholder="Select City"
           >
             {this.getcityes()}
           </Picker>
@@ -325,14 +332,16 @@ class myFormCom extends React.Component {
               this.setState({ gender: value });
             }}
           ></RadioForm>
-          <Text style={styles.sign}>{this.state.city}</Text>
+         <Text style={styles.sign}>{this.state.city}</Text>
           <Button
             style={styles.customButton}
             onPress={this.props.handleSubmit(this.submit)}
             text="SignUp"
             textStyle={styles.textStyle}
           ></Button>
-        </View>
+                    <Text style={{paddingTop:screenHeight*12}}></Text>
+
+        </View> 
       </View>
     );
   }
